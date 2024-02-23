@@ -30,4 +30,6 @@ not_now = driver.find_element(By.XPATH, '/html/body/div[4]/div/div/div/div[3]/bu
 not_now.click()
 
 #Open the real tab
+real = driver.find_element(By.XPATH, '//*[@id="react-root"]/section/nav/div[2]/div/div/div[3]/div/div[5]/a')
+real.click()
 
