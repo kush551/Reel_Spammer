@@ -5,6 +5,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 
+
+#Taking the user input
+user_name = input("Enter the username of the person you want to send the reels to: ")
+
 #Opening the browser
 driver = webdriver.Chrome()
 action = ActionChains(driver)
