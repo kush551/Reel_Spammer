@@ -14,6 +14,19 @@ from selenium.webdriver.common.action_chains import ActionChains
 user_name = input("Enter the username of the person you want to send the reels to: ")
 
 
+
+Email_Path = "//*[@id='loginForm']/div/div[1]/div/label/input"
+Password_Path = "//*[@id='loginForm']/div/div[2]/div/label/input"
+Login_Button_Path = "//*[@id='loginForm']/div/div[3]"
+Not_Now_Path = "//*[text()='Not Now']"
+Reels_Path = "//*[@aria-label='Reels']"
+Direct_Message_Path = "svg[aria-label='Direct'].x1lliihq.x1n2onr6.xyb1xck"
+Send_Button_Path = "//*[text()='Send']"
+User_Path = "//span[contains(text()"
+
+
+
+
 # Opening the browser
 driver = webdriver.Chrome()
 action = ActionChains(driver)
@@ -21,23 +34,23 @@ driver.get("https://www.instagram.com/")
 time.sleep(2)
 
 # Logging in
-email = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
+email = driver.find_element(By.XPATH, f'{Email_Path}')
 email.send_keys("the_game.news")
-password = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
+password = driver.find_element(By.XPATH, f'{Password_Path}')
 password.send_keys("sudhir1!shalini")
-loginbutton= driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]')
-loginbutton.click()
+login_button = driver.find_element(By.XPATH, f'{Login_Button_Path}')
+login_button.click()
 time.sleep(5)
 
 # Removing the notification
 driver.back()
 time.sleep(2)
-Notification = driver.find_element(By.XPATH, "//*[text()='Not Now']")
-Notification.click()
+Not_Now = driver.find_element(By.XPATH, f"{Not_Now_Path}")
+Not_Now.click()
 time.sleep(2)
 
 # Clicking on the reels
-reel = driver.find_element(By.XPATH, '//*[@aria-label="Reels"]')
+reel = driver.find_element(By.XPATH, f'{Reels_Path}')
 reel.click()
 time.sleep(5)
 
@@ -50,16 +63,15 @@ while True:
         # Your actions to send reels
 
         # Wait for the direct message modal to appear
-        direct_modal = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'svg[aria-label="Direct"].x1lliihq.x1n2onr6.xyb1xck')))
+        direct_modal = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, f'{Direct_Message_Path}')))
         direct_modal.click()
 
         # Find the user to send the reel
-        person = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, f'//span[contains(text(), "{user_name}")]')))
+        person = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, f'//span[contains(text(), "{user_name}")]')))
         person.click()
 
         # Click the send button
-        send_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Send']")))
+        send_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"{Send_Button_Path}")))
         send_button.click()
 
         print("Reel sent successfully.")
