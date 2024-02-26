@@ -2,8 +2,6 @@
 import time
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -12,9 +10,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # Taking the user input
 user_name = input("Enter the username of the person you want to send the reels to: ")
+Email_Input = input("Enter your Instagram email or username: ")
+Password_Input = input("Enter your Instagram password: ")
 
 
-
+# Locating path of the website
 Email_Path = "//*[@id='loginForm']/div/div[1]/div/label/input"
 Password_Path = "//*[@id='loginForm']/div/div[2]/div/label/input"
 Login_Button_Path = "//*[@id='loginForm']/div/div[3]"
@@ -35,12 +35,12 @@ time.sleep(2)
 
 # Logging in
 email = driver.find_element(By.XPATH, f'{Email_Path}')
-email.send_keys("the_game.news")
+email.send_keys(Email_Input)
 password = driver.find_element(By.XPATH, f'{Password_Path}')
-password.send_keys("sudhir1!shalini")
+password.send_keys(Password_Input)
 login_button = driver.find_element(By.XPATH, f'{Login_Button_Path}')
 login_button.click()
-time.sleep(5)
+time.sleep(2)
 
 # Removing the notification
 driver.back()
