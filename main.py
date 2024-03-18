@@ -6,13 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-
-
 # Taking the user input
 user_name = input("Enter the username of the person you want to send the reels to: ")
 Email_Input = input("Enter your Instagram email or username: ")
 Password_Input = input("Enter your Instagram password: ")
-
 
 # Locating path of the website
 Email_Path = "//*[@id='loginForm']/div/div[1]/div/label/input"
@@ -23,9 +20,6 @@ Reels_Path = "//*[@aria-label='Reels']"
 Direct_Message_Path = "svg[aria-label='Direct'].x1lliihq.x1n2onr6.xyb1xck"
 Send_Button_Path = "//*[text()='Send']"
 User_Path = "//span[contains(text()"
-
-
-
 
 # Opening the browser
 driver = webdriver.Chrome()
@@ -56,8 +50,6 @@ time.sleep(5)
 
 
 # creating a loop to keep scrolling and keep sharing the reels
-
-
 while True:
     try:
         # Your actions to send reels
